@@ -16,16 +16,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@EnableWebSecurity
-@Configuration
+//@EnableWebSecurity
+//@Configuration
 public class SecurityConfig3 {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         AuthenticationManagerBuilder builder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        builder.authenticationProvider(customAuthenticationProvider());
-        builder.authenticationProvider(customAuthenticationProvider2());
+//        builder.authenticationProvider(customAuthenticationProvider());
+//        builder.authenticationProvider(customAuthenticationProvider2());
 
         http
                 .authorizeHttpRequests(auth -> auth
@@ -39,10 +39,10 @@ public class SecurityConfig3 {
         return http.build();
     }
 
-    @Bean
-    public AuthenticationProvider customAuthenticationProvider() {
-        return new CustomAuthenticationProvider();
-    }
+//    @Bean
+//    public AuthenticationProvider customAuthenticationProvider() {
+//        return new CustomAuthenticationProvider();
+//    }
 
     @Bean
     public AuthenticationProvider customAuthenticationProvider2() {

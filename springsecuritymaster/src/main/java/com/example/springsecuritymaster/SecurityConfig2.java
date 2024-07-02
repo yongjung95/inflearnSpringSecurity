@@ -25,7 +25,7 @@ public class SecurityConfig2 {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthenticationManagerBuilder builder, AuthenticationConfiguration configuration) throws Exception {
 
         AuthenticationManagerBuilder managerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        managerBuilder.authenticationProvider(customAuthenticationProvider());
+//        managerBuilder.authenticationProvider(customAuthenticationProvider());
 
         ProviderManager authenticationManager = (ProviderManager) configuration.getAuthenticationManager();
         authenticationManager.getProviders().remove(0);
@@ -43,10 +43,10 @@ public class SecurityConfig2 {
         return http.build();
     }
 
-    @Bean
-    public AuthenticationProvider customAuthenticationProvider() {
-        return new CustomAuthenticationProvider();
-    }
+//    @Bean
+//    public AuthenticationProvider customAuthenticationProvider() {
+//        return new CustomAuthenticationProvider();
+//    }
 
     @Bean
     public UserDetailsService userDetailsService() {
