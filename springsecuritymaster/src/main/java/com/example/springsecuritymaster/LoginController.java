@@ -20,7 +20,7 @@ public class LoginController {
     private final AuthenticationManager authenticationManager;
     private final HttpSessionSecurityContextRepository httpSessionSecurityContextRepository = new HttpSessionSecurityContextRepository();
 
-    @PostMapping("/login")
+//    @PostMapping("/login")
     public Authentication login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
         UsernamePasswordAuthenticationToken token =
                 UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getUsername(), loginRequest.getPassword());
