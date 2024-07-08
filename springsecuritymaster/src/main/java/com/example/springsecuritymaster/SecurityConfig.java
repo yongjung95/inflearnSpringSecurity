@@ -24,17 +24,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        SpaCsrfTokenRequestHandler csrfTokenRequestHandler = new SpaCsrfTokenRequestHandler();
-
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/csrf", "/cookie", "/cookieCsrf").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
-                .csrf(csrf -> csrf
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                        .csrfTokenRequestHandler(csrfTokenRequestHandler)
-                );
-        http.addFilterBefore(new CsrfCookieFilter(), BasicAuthenticationFilter.class);
+        ;
 
         return http.build();
     }
