@@ -24,24 +24,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                        .requestMatchers("/csrf").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
-                .exceptionHandling(exception -> exception
-//                        .authenticationEntryPoint((request, response, authException) -> {
-//                            System.out.println("exception: " + authException.getMessage());
-//                            response.sendRedirect("/login");
-//                        })
-                        .accessDeniedHandler((request, response, accessDeniedException) -> {
-                            System.out.println("exception: " + accessDeniedException.getMessage());
-                            response.sendRedirect("/denied");
-                        })
-                )
-
-
+                .csrf(csrf -> csrf.disable())
         ;
-
         return http.build();
     }
 

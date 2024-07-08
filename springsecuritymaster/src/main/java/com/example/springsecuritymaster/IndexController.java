@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -78,5 +79,10 @@ public class IndexController {
     @GetMapping("/denied")
     public String denied() {
         return "denied";
+    }
+
+    @PostMapping("/csrf")
+    public String csrf() {
+        return "csrf 적용됨";
     }
 }
