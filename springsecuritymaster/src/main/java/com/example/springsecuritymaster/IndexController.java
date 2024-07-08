@@ -1,13 +1,6 @@
 package com.example.springsecuritymaster;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.pulsar.PulsarProperties;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.CurrentSecurityContext;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,93 +9,43 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class IndexController {
 
-    private final SessionInfoService sessionInfoService;
-
-    @GetMapping("/")
-    public Authentication index(Authentication authentication){
-        return authentication;
+    @GetMapping("/user")
+    public String user(){
+        return "user";
     }
 
-    @GetMapping("/sessionInfo")
-    public String sessionInfo() {
-        sessionInfoService.sessionInfo();
-        return "sessionInfo";
+    @GetMapping("/myPage/points")
+    public String myPage(){
+        return "myPage";
     }
 
-    @GetMapping("/home")
-    public String home() {
-        return "home";
+    @GetMapping("/manager")
+    public String manager(){
+        return "manager";
     }
 
-    @GetMapping("/loginPage")
-    public String loginPage() {
-        return "loginPage";
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin";
     }
 
-    @GetMapping("/anonymous")
-    public String anonymous() {
-        return "anonymous";
+    @GetMapping("/admin/payment")
+    public String adminPayment(){
+        return "adminPayment";
     }
 
-    @GetMapping("/authentication")
-    public String authentication(Authentication authentication) {
-        if (authentication instanceof AnonymousAuthenticationToken) {
-            return "anonymous";
-        } else {
-            return "not anonymous";
-        }
+    @GetMapping("/resource/address_01")
+    public String address_01(){
+        return "address_01";
     }
 
-    @GetMapping("/anonymousContext")
-    public String anonymousContext(@CurrentSecurityContext SecurityContext context) {
-        return context.getAuthentication().getName();
+    @GetMapping("/resource/address01")
+    public String address01(){
+        return "address01";
     }
 
-    @GetMapping("/logoutSuccess")
-    public String logoutSuccess() {
-        return "logoutSuccess";
-    }
-
-    @GetMapping("/invalidSessionUrl")
-    public String invalidSessionUrl() {
-        return "invalidSessionUrl";
-    }
-
-    @GetMapping("/expiredUrl")
-    public String expiredUrl() {
-        return "expiredUrl";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/denied")
-    public String denied() {
-        return "denied";
-    }
-
-    @PostMapping("/csrf")
-    public String csrf() {
-        return "csrf 적용됨";
-    }
-
-    @GetMapping("/csrfToken")
-    public String csrfToken(HttpServletRequest request) {
-        CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-        CsrfToken csrfToken2 = (CsrfToken) request.getAttribute("_csrf");
-        String token = csrfToken.getToken();
-        return token;
-    }
-
-    @PostMapping("/formCsrf")
-    public CsrfToken formCsrf(CsrfToken csrfToken) {
-        return csrfToken;
-    }
-
-    @PostMapping("/cookieCsrf")
-    public CsrfToken cookieCsrf(CsrfToken csrfToken) {
-        return csrfToken;
+    @PostMapping("/post")
+    public String post(){
+        return "post";
     }
 }

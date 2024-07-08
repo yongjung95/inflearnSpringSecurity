@@ -17,21 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class LoginController {
 
-    private final AuthenticationManager authenticationManager;
-    private final HttpSessionSecurityContextRepository httpSessionSecurityContextRepository = new HttpSessionSecurityContextRepository();
+//    private final AuthenticationManager authenticationManager;
+//    private final HttpSessionSecurityContextRepository httpSessionSecurityContextRepository = new HttpSessionSecurityContextRepository();
 
 //    @PostMapping("/login")
-    public Authentication login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
-        UsernamePasswordAuthenticationToken token =
-                UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getUsername(), loginRequest.getPassword());
-        Authentication authentication = authenticationManager.authenticate(token);
-        SecurityContext securityContext = SecurityContextHolder.getContextHolderStrategy().createEmptyContext();
-        securityContext.setAuthentication(authentication);
-        SecurityContextHolder.getContextHolderStrategy().setContext(securityContext);
+//    public Authentication login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
+//        UsernamePasswordAuthenticationToken token =
+//                UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.getUsername(), loginRequest.getPassword());
+//        Authentication authentication = authenticationManager.authenticate(token);
+//        SecurityContext securityContext = SecurityContextHolder.getContextHolderStrategy().createEmptyContext();
+//        securityContext.setAuthentication(authentication);
+//        SecurityContextHolder.getContextHolderStrategy().setContext(securityContext);
 
-        httpSessionSecurityContextRepository.saveContext(securityContext, request, response);
-
-        return authentication;
-    }
+//        httpSessionSecurityContextRepository.saveContext(securityContext, request, response);
+//
+//        return authentication;
+//    }
 
 }
