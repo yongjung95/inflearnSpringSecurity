@@ -19,7 +19,7 @@ public class IndexController {
         return "custom";
     }
 
-    @GetMapping("/user/{name}")
+//    @GetMapping("/user/{name}")
     public String userName(@PathVariable(value = "name") String name){
         return name;
     }
